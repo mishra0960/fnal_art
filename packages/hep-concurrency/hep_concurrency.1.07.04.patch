@@ -1,0 +1,11 @@
+--- spack-src/hep_concurrency/test/CMakeLists.txt.orig	2022-09-10 02:33:05.948448000 +0000
++++ spack-src/hep_concurrency/test/CMakeLists.txt	2022-09-10 02:33:26.200546000 +0000
+@@ -31,7 +31,7 @@
+     LIBRARIES PRIVATE hep_concurrency::hep_concurrency)
+ endforeach()
+ 
+-target_link_libraries(waiting_task_list_t PRIVATE TBB::tbb)
++#target_link_libraries(waiting_task_list_t PRIVATE TBB::tbb)
+ 
+ cet_test(simultaneous_function_spawner_t USE_CATCH2_MAIN
+   LIBRARIES PRIVATE hep_concurrency::simultaneous_function_spawner

@@ -69,6 +69,7 @@ class HepConcurrency(CMakePackage):
             description='Use the specified C++ standard when building.')
 
     patch('hep_concurrency.1.04.01.patch', when='@1.04.01')
+    patch('hep_concurrency.1.07.04.patch', when='@1.07.04')
 
     # Build-only dependencies.
     depends_on('cmake@3.11:', type='build')

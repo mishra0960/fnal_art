@@ -59,7 +59,7 @@ class Triton(CMakePackage):
     depends_on('prometheus-cpp')
     depends_on('curl@7.56:')
     depends_on('opencv ~videoio~gtk~java~vtk~jpeg', when='~cuda')
-    depends_on('opencv ~videoio~gtk~java~vtk~jpeg+cuda+contrib', when='+cuda')
+    depends_on('opencv ~videoio~gtk~java~vtk~jpeg+cuda+cudalegacy+cudaobjdetect', when='+cuda')
     depends_on('cuda', when='+cuda')
     depends_on('nccl', when='+cuda')
     

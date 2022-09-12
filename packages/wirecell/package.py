@@ -81,6 +81,7 @@ class Wirecell(Package):
 
         cfg += " configure"
         python(*cfg.split())
+        filter_file( r'-std=c\+\+11', '-std=c++17', 'build/c4che/_cache.py')
         python("wcb","-vv")
         python("wcb", "install")
         return
@@ -123,4 +124,5 @@ class Wirecell(Package):
             flags.append('-Wno-error=deprecated-declarations')
             flags.append('-Wno-error=class-memaccess')
             flags.append('-Wno-error=unused-function')
+            return (None,flags, None)
         return (flags, None, None)
