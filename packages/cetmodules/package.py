@@ -67,6 +67,11 @@ class Cetmodules(CMakePackage):
     depends_on('py-sphinxcontrib-moderncmakedomain', when='@develop',type='build')
     depends_on('py-sphinx-rtd-theme', when='@2.00.10:',type='build')
     depends_on('py-sphinx-rtd-theme', when='@develop',type='build')
+    depends_on('git@2.35:')
+    depends_on('py-sphinx', type='build',when='@2.00.10:')
+    depends_on('py-sphinx-design', type='build',when='@2.00.10:')
+    depends_on('py-sphinx', type='build',when='@develop')
+    depends_on('py-sphinx-design', type='build',when='@develop')
 
     @run_before('cmake')
     def fix_fix_man(self):

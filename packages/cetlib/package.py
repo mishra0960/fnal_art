@@ -42,7 +42,7 @@ class Cetlib(CMakePackage):
     version('MVP', branch='archive/feature/for_spack', git=git_base, get_full_repo=True)
     version('develop', branch='develop', git=git_base, get_full_repo=True)
    
-    patch('cetlib-notests.patch', when='@develop')
+    #patch('cetlib-notests.patch', when='@develop')
 
     def url_for_version(self, version):
         url = 'https://github.com/art-framework-suite/{0}/archive/v{1}.tar.gz'
