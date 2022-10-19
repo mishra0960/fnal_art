@@ -93,13 +93,8 @@ class Wirecell(Package):
 
         cfg += " configure"
         python(*cfg.split())
-<<<<<<< HEAD
-        filter_file( r'-std=c\+\+11', '-std=c++17', 'build/c4che/_cache.py')
-        python("wcb","-vv")
-=======
         filter_file(r"-std=c\+\+11", cxxstdflag, "build/c4che/_cache.py")
         python("wcb", "-vv")
->>>>>>> 00ac12a03733cdc43ce0a830fca85b6832033466
         python("wcb", "install")
         return
 
@@ -138,16 +133,8 @@ class Wirecell(Package):
         sanitize_environments(run_env)
 
     def flag_handler(self, name, flags):
-<<<<<<< HEAD
-        if name == 'cxxflags' and  self.spec.compiler.name == 'gcc':
-            flags.append('-Wno-error=deprecated-declarations')
-            flags.append('-Wno-error=class-memaccess')
-            flags.append('-Wno-error=unused-function')
-            return (None,flags, None)
-=======
         if name == "cxxflags" and self.spec.compiler.name == "gcc":
             flags.append("-Wno-error=deprecated-declarations")
             flags.append("-Wno-error=class-memaccess")
             flags.append("-Wno-error=unused-function")
->>>>>>> 00ac12a03733cdc43ce0a830fca85b6832033466
         return (flags, None, None)

@@ -39,39 +39,12 @@ class Nucondb(MakefilePackage):
             r"catch \(WebAPIException we\)", "catch (WebAPIException &we)", "src/nucondb.cc"
         )
 
-<<<<<<< HEAD
-    depends_on('ifdhc')
-    depends_on('ifbeam')
-    depends_on('libwda')
-
-    def patch(self):
-        filter_file(
-            r'catch \(WebAPIException we\)',
-            'catch (WebAPIException &we)',
-            'src/nucondb.cc'
-        )
- 
-=======
->>>>>>> 00ac12a03733cdc43ce0a830fca85b6832033466
     def url_for_version(self, version):
         url = "https://cdcvs.fnal.gov/cgi-bin/git_archive.cgi/cvs/projects/{0}.v{1}.tbz2"
         return url.format("ifdhc-" + self.name, version.underscored)
 
     @property
     def build_targets(self):
-<<<<<<< HEAD
-        cxxstd = self.spec.variants['cxxstd'].value
-        cxxstdflag =  '' if cxxstd == 'default' else \
-                      getattr(self.compiler, 'cxx{0}_flag'.format(cxxstd))        
-        tlist = ['LIBWDA_FQ_DIR=' + self.spec['libwda'].prefix,
-                'LIBWDA_LIB=' + self.spec['libwda'].prefix.lib,
-                'IFDHC_FQ_DIR=' + self.spec['ifdhc'].prefix,
-                'IFBEAM_FQ_DIR=' + self.spec['ifbeam'].prefix,
-                'IFDHC_LIB=' + self.spec['ifdhc'].prefix.lib,
-                'ARCH=' + cxxstdflag]
-
-        return tlist
-=======
         cxxstd = self.spec.variants["cxxstd"].value
         cxxstdflag = (
             "" if cxxstd == "default" else getattr(self.compiler, "cxx{0}_flag".format(cxxstd))
@@ -84,7 +57,6 @@ class Nucondb(MakefilePackage):
             "IFDHC_LIB=" + self.spec["ifdhc"].prefix.lib,
             "ARCH=" + cxxstdflag,
         ]
->>>>>>> 00ac12a03733cdc43ce0a830fca85b6832033466
 
     @property
     def install_targets(self):

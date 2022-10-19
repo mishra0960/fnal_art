@@ -24,53 +24,6 @@ class Triton(CMakePackage):
     """C++ client code for Triton Inference Server."""
 
     homepage = "https://github.com/triton-inference-server/server"
-<<<<<<< HEAD
-    url      = "https://github.com/triton-inference-server/server/archive/v2.6.0.tar.gz"
-
-    maintainers = ['marcmengel', 'github_user2']
-
-    version('2.3.0', sha256='3e46d09f0d3dd79513e10112170a81ed072db0719b75b95943d824b1afd149c4')
-    version('2.6.0', sha256='c4fad25c212a0b5522c7d65c78b2f25ab0916ccf584ec0295643fec863cb403e')
-    version('2.7.0', sha256='7ad24acb3c7138ff5667137e143de3f7345f03df61f060004214495faa7fa16e')
-
-
-    variant('cuda', default=False)
-    variant('cxxstd',
-            default='17',
-            values=('14', '17'),
-            multi=False,
-            description='Use the specified C++ standard when building.')
-
-    depends_on('cmake@3.18:', type='build')
-    depends_on('py-setuptools', type='build')
-    depends_on('py-wheel', type='build')
-    depends_on('py-grpcio', type=('build','run'))
-    depends_on('py-grpcio-tools', type=('build','run'))
-    depends_on('py-numpy')
-    depends_on('py-geventhttpclient')
-    depends_on('py-python-rapidjson')
-    depends_on('rapidjson')
-    depends_on('protobuf')
-    depends_on('googletest')
-    depends_on('google-cloud-cpp')
-    depends_on('crc32c')
-    depends_on('c-ares')
-    depends_on('libb64')
-    depends_on('libevent')
-    depends_on('libevhtp')
-    depends_on('c-ares')
-    depends_on('abseil-cpp')
-    depends_on('grpc')
-    depends_on('prometheus-cpp')
-    depends_on('curl@7.56:')
-    depends_on('opencv ~videoio~gtk~java~vtk~jpeg', when='~cuda')
-    depends_on('opencv ~videoio~gtk~java~vtk~jpeg+cuda+cudalegacy+cudaobjdetect', when='+cuda')
-    depends_on('cuda', when='+cuda')
-    depends_on('nccl', when='+cuda')
-    
-    patch('cms.patch', when='@2.3.0')
-    patch('proto.patch', when='@2.3.0')
-=======
     url = "https://github.com/triton-inference-server/server/archive/v2.6.0.tar.gz"
 
     maintainers = ["marcmengel", "github_user2"]
@@ -117,7 +70,6 @@ class Triton(CMakePackage):
 
     patch("cms.patch", when="@2.3.0")
     patch("proto.patch", when="@2.3.0")
->>>>>>> 00ac12a03733cdc43ce0a830fca85b6832033466
 
     # trying doubled build...
     build = tryagain(CMakePackage.build)
