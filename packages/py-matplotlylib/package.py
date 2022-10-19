@@ -6,17 +6,18 @@
 
 from spack import *
 
+
 class PyMatplotlylib(PythonPackage):
     """Package to render matplotlib figures in plotly."""
 
     # FIXME: Add a proper url for your package's homepage here.
     homepage = "https://pypi.org/project/matplotlylib"
-    pypi     = "matplotlylib/matplotlylib-0.1.0.tar.gz"
+    pypi = "matplotlylib/matplotlylib-0.1.0.tar.gz"
 
-    version('0.1.0', sha256='c7f5fa7f842742d9385b6961f88b9a992a749391a5f7229cc8be325f712c1fce')
+    version("0.1.0", sha256="c7f5fa7f842742d9385b6961f88b9a992a749391a5f7229cc8be325f712c1fce")
 
-    depends_on('py-setuptools', type='build')
-    depends_on('py-plotly',     type=('build', 'run'))
+    depends_on("py-setuptools", type="build")
+    depends_on("py-plotly", type=("build", "run"))
 
     def build_args(self, spec, prefix):
         # FIXME: Add arguments other than --prefix

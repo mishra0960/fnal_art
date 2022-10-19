@@ -28,26 +28,26 @@ class PrometheusCpp(CMakePackage):
 
     # FIXME: Add a proper url for your package's homepage here.
     homepage = "https://github.com/jupp0r/prometheus-cpp/"
-    url      = "https://github.com/jupp0r/prometheus-cpp/archive/refs/tags/v0.12.2.zip"
+    url = "https://github.com/jupp0r/prometheus-cpp/archive/refs/tags/v0.12.2.zip"
 
     # notify when the package is updated.
     # maintainers = ['marcmengel',]
 
-    version('0.12.2', sha256='7cbf90b89a293b4db3ff92517deface71a2edd74df7146317f79ae2a6f8c4249')
-    version('0.12.1', sha256='3f9e623381a81d99e3a61053b0e671e9b5db209588a9364a980c237a19149150')
-    version('0.12.0', sha256='a605904a2d40bc823bb121b2d25eb26b61065e29f0baaee6590b8058808a2cef')
-    version('0.11.0', sha256='396a31ec459e0c676c75a4cc94ab33c0728949b4d32b1d3418262cc6acc16d1b')
+    version("0.12.2", sha256="7cbf90b89a293b4db3ff92517deface71a2edd74df7146317f79ae2a6f8c4249")
+    version("0.12.1", sha256="3f9e623381a81d99e3a61053b0e671e9b5db209588a9364a980c237a19149150")
+    version("0.12.0", sha256="a605904a2d40bc823bb121b2d25eb26b61065e29f0baaee6590b8058808a2cef")
+    version("0.11.0", sha256="396a31ec459e0c676c75a4cc94ab33c0728949b4d32b1d3418262cc6acc16d1b")
 
-    depends_on('pkgconfig')
+    depends_on("pkgconfig")
 
     def cmake_args(self):
         args = [
-            '-DENABLE_PULL=OFF',
-            '-DENABLE_COMPRESSION=ON',
-            '-DENABLE_TESTING=OFF',
-            '-DUSE_THIRDPARTY_LIBRARIES=OFF',
-            '-DTHIRDPARTY_CIVETWEB_WITH_SSL=OFF',
-            '-DOVERRIDE_CXX_STANDARD_FLAG=ON',
-            '-DGENERATE_PKGCONFIG=ON',
-            ]
+            "-DENABLE_PULL=OFF",
+            "-DENABLE_COMPRESSION=ON",
+            "-DENABLE_TESTING=OFF",
+            "-DUSE_THIRDPARTY_LIBRARIES=OFF",
+            "-DTHIRDPARTY_CIVETWEB_WITH_SSL=OFF",
+            "-DOVERRIDE_CXX_STANDARD_FLAG=ON",
+            "-DGENERATE_PKGCONFIG=ON",
+        ]
         return args

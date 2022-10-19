@@ -5,16 +5,17 @@
 
 from spack import *
 
+
 class PyPyinotify(PythonPackage):
-    """Linux filesystem events monitoring """
+    """Linux filesystem events monitoring"""
 
     # FIXME: Add a proper url for your package's homepage here.
     homepage = "http://github.com/seb-m/pyinotify"
-    pypi     = "pyinotify/pyinotify-0.9.6.tar.gz"
+    pypi = "pyinotify/pyinotify-0.9.6.tar.gz"
 
-    version('0.9.6', sha256='9c998a5d7606ca835065cdabc013ae6c66eb9ea76a00a1e3bc6e0cfe2b4f71f4')
+    version("0.9.6", sha256="9c998a5d7606ca835065cdabc013ae6c66eb9ea76a00a1e3bc6e0cfe2b4f71f4")
 
-    depends_on('py-setuptools', type='build')
+    depends_on("py-setuptools", type="build")
 
     def build_args(self, spec, prefix):
         # FIXME: Add arguments other than --prefix

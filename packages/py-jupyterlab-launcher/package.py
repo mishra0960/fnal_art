@@ -24,15 +24,15 @@ from spack import *
 
 
 class PyJupyterlabLauncher(PythonPackage):
-    """This package is used to launch an application built using JupyterLab """
+    """This package is used to launch an application built using JupyterLab"""
 
     homepage = "http://jupyter.org/"
-    pypi     = "jupyterlab_launcher/jupyterlab_launcher-0.13.1.tar.gz"
+    pypi = "jupyterlab_launcher/jupyterlab_launcher-0.13.1.tar.gz"
 
-    version('0.13.1', sha256='f880eada0b8b1f524d5951dc6fcae0d13b169897fc8a247d75fb5beadd69c5f0')
+    version("0.13.1", sha256="f880eada0b8b1f524d5951dc6fcae0d13b169897fc8a247d75fb5beadd69c5f0")
 
-    depends_on('py-setuptools', type='build')
-    depends_on('py-jupyter',    type=('build', 'run'))
+    depends_on("py-setuptools", type="build")
+    depends_on("py-jupyter", type=("build", "run"))
 
     def build_args(self, spec, prefix):
         # FIXME: Add arguments other than --prefix

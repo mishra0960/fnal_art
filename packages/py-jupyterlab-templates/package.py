@@ -11,13 +11,13 @@ class PyJupyterlabTemplates(PythonPackage):
     """Support for jupyter notebook templates in jupyterlab"""
 
     homepage = "https://github.com/jpmorganchase/jupyterlab_templates"
-    pypi     = "jupyterlab_templates/jupyterlab_templates-0.3.1.tar.gz"
+    pypi = "jupyterlab_templates/jupyterlab_templates-0.3.1.tar.gz"
 
-    version('0.3.1', sha256='7ee348ea0318033fcbd9274658c418d6cadafe89e9b3197e89c97f1cfde3eaff')
+    version("0.3.1", sha256="7ee348ea0318033fcbd9274658c418d6cadafe89e9b3197e89c97f1cfde3eaff")
 
-    depends_on('py-jupyter-packaging', type='build')
-    depends_on('py-setuptools', type='build')
-    depends_on('py-jupyter',    type=('build', 'run'))
+    depends_on("py-jupyter-packaging", type="build")
+    depends_on("py-setuptools", type="build")
+    depends_on("py-jupyter", type=("build", "run"))
 
     def build_args(self, spec, prefix):
         # FIXME: Add arguments other than --prefix

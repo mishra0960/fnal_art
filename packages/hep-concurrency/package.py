@@ -1,24 +1,17 @@
-
 # Copyright 2013-2019 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
-
-from spack import *
-from llnl.util import tty
-import sys
 import os
-import spack.util.spack_json as sjson
+
+from spack.package import *
 
 
-def sanitize_environments(*args):
-    for env in args:
-        for var in ('PATH', 'CET_PLUGIN_PATH',
-                    'LD_LIBRARY_PATH', 'DYLD_LIBRARY_PATH', 'LIBRARY_PATH',
-                    'CMAKE_INSTALL_RPATH', 'CMAKE_PREFIX_PATH', 'ROOT_INCLUDE_PATH'):
-            env.prune_duplicate_paths(var)
-            env.deprioritize_system_paths(var)
+def sanitize_environments(env, *vars):
+    for var in vars:
+        env.prune_duplicate_paths(var)
+        env.deprioritize_system_paths(var)
 
 
 class HepConcurrency(CMakePackage):
@@ -72,7 +65,7 @@ class HepConcurrency(CMakePackage):
     patch('hep_concurrency.1.07.04.patch', when='@1.07.04')
 
     # Build-only dependencies.
-    depends_on('cmake@3.11:', type='build')
+    depends_on('cmake@3.21:', type='build')
     depends_on('cetmodules', type='build')
     depends_on('cetlib-except', type=('build','run'))
 
@@ -85,15 +78,17 @@ class HepConcurrency(CMakePackage):
         generator = os.environ['SPACKDEV_GENERATOR']
         if generator.endswith('Ninja'):
             depends_on('ninja', type='build')
+    if "SPACK_CMAKE_GENERATOR" in os.environ:
+        generator = os.environ["SPACK_CMAKE_GENERATOR"]
+        if generator.endswith("Ninja"):
+            depends_on("ninja@1.10:", type="build")
 
     def cmake_args(self):
-        args = ['-DCMAKE_CXX_STANDARD={0}'.
-                format(self.spec.variants['cxxstd'].value)]
-        args.append('-DCMAKE_PROJECT_VERSION={0}'.format(self.spec.version))
-        return args
+        return ["--preset", "default", self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]
 
-    def setup_build_environment(self, spack_env):
+    def setup_build_environment(self, env):
+        prefix = self.build_directory
         # PATH for tests.
-        spack_env.prepend_path('PATH', os.path.join(self.build_directory, 'bin'))
+        env.prepend_path("PATH", os.path.join(prefix, "bin"))
         # Cleanup.
-        sanitize_environments(spack_env)
+        sanitize_environments(env, "PATH")
