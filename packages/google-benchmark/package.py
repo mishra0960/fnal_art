@@ -42,5 +42,5 @@ class GoogleBenchmark(CMakePackage):
         # FIXME: Add arguments other than
         # FIXME: CMAKE_INSTALL_PREFIX and CMAKE_BUILD_TYPE
         # FIXME: If not needed delete this function
-        args = [CMakePackage.define("BENCHMARK_ENABLE_TESTING", "OFF")]
+        args = [self.define("BENCHMARK_ENABLE_TESTING", "OFF")]
         return args
