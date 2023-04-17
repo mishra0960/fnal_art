@@ -22,6 +22,8 @@ class CanvasRootIo(CMakePackage):
     url = "https://github.com/art-framework-suite/canvas-root-io/archive/refs/tags/v3_09_01.tar.gz"
 
     version("develop", branch="develop", get_full_repo=True)
+    version("1.11.01", sha256="7f8d6a465bce3b874abbac7d1f08f587db32e0035a2200402fbde2b5cef762d7")
+
 
     variant(
         "cxxstd",
@@ -43,6 +45,10 @@ class CanvasRootIo(CMakePackage):
     depends_on("hep-concurrency")
     depends_on("messagefacility")
     depends_on("root@6.26:+python")
+
+    def url_for_version(self,version):
+        urlfmt = "https://github.com/art-framework-suite/canvas-root-io/archive/refs/tags/v{0}.tar.gz"
+        return urlfmt.format(version.underscored)
 
     if "SPACK_CMAKE_GENERATOR" in os.environ:
         generator = os.environ["SPACK_CMAKE_GENERATOR"]
@@ -75,6 +81,8 @@ class CanvasRootIo(CMakePackage):
         sanitize_environments(
             env, "PATH", "CET_PLUGIN_PATH", "LD_LIBRARY_PATH", "ROOT_INCLUDE_PATH"
         )
+        # just setting with cmake doesn't seem to get through to the dictionary compiles(?)
+        env.set("CXXFLAGS", "-std=c++{0}".format(self.spec.variants["cxxstd"].value))
 
     def setup_run_environment(self, env):
         prefix = self.prefix
